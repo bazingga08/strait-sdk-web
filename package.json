@@ -1,0 +1,21 @@
+{
+  "name": "@bridge/sdk-web",
+  "version": "0.1.0",
+  "description": "Bridge deep-linking SDK for the web — deferred match + click attribution",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": ["deep-linking", "deferred-deep-linking", "attribution", "bridge"],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.8"
+  }
+}
