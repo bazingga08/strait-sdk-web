@@ -3,13 +3,13 @@ import { collectDevice, type DeviceFields } from './device.js';
 export type { DeviceFields } from './device.js';
 export { computeSignature, h32 } from './signature.js';
 
-export interface BridgeConfig {
+export interface StraitConfig {
   /**
-   * Your workspace's publishable key (`bk_pub_live_…`), from Dashboard →
+   * Your workspace's publishable key (`st_pub_live_…`), from Dashboard →
    * Get started. Safe to ship in apps/websites — never use the secret key here.
    */
   publishableKey: string;
-  /** The Bridge link host, e.g. https://go.yourbrand.com. */
+  /** The Strait link host, e.g. https://go.yourbrand.com. */
   endpoint: string;
   /** Override device collection (tests / non-browser hosts). */
   device?: DeviceFields;
@@ -25,10 +25,10 @@ export interface MatchResult {
   matchMethod: 'exact_ext' | 'exact_core' | 'none';
 }
 
-const DONE_KEY = 'bridge_match_done';
+const DONE_KEY = 'strait_match_done';
 
 /**
- * Call once on first launch. Asks the Bridge engine whether this device
+ * Call once on first launch. Asks the Strait engine whether this device
  * recently clicked one of your links, and returns the deferred deep link.
  *
  * Idempotent per browser: the lookup runs at most once (it writes an install
@@ -36,7 +36,7 @@ const DONE_KEY = 'bridge_match_done';
  * `force: true` only in tests.
  */
 export async function resolveDeferredLink(
-  config: BridgeConfig,
+  config: StraitConfig,
   opts: { force?: boolean } = {},
 ): Promise<MatchResult> {
   const none: MatchResult = { matched: false, matchMethod: 'none' };

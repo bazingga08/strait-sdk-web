@@ -1,8 +1,8 @@
-# @bridge/sdk-web
+# @strait/sdk-web
 
 Deep linking for the web — deferred match + attribution, in a few lines.
 
-Part of [Bridge](../). The device signature is kept in lockstep with the server
+Part of [Strait](../). The device signature is kept in lockstep with the server
 and every other SDK via [`shared-spec`](../shared-spec) golden vectors (this
 package runs the same vectors in CI), so deferred match never drifts.
 
@@ -10,21 +10,21 @@ package runs the same vectors in CI), so deferred match never drifts.
 
 <!-- brand:install -->
 ```sh
-npm install @bridge/sdk-web
+npm install @strait/sdk-web
 ```
 <!-- /brand:install -->
 
 ## Use
 
-On first launch, ask Bridge whether this device recently clicked one of your
+On first launch, ask Strait whether this device recently clicked one of your
 links — and route to the deferred destination:
 
 ```ts
-import { resolveDeferredLink } from '@bridge/sdk-web';
+import { resolveDeferredLink } from '@strait/sdk-web';
 
 const result = await resolveDeferredLink({
-  publishableKey: 'bk_pub_live_…',    // Dashboard → Get started (safe in apps; never the secret key)
-  endpoint: 'https://go.yourbrand.com', // your Bridge link host
+  publishableKey: 'st_pub_live_…',    // Dashboard → Get started (safe in apps; never the secret key)
+  endpoint: 'https://go.yourbrand.com', // your Strait link host
 });
 
 if (result.matched && result.longUrl) {
